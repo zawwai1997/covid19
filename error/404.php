@@ -184,7 +184,7 @@ body {
 			</div>
 			<h1>oops!</h1>
 			<h2>Error 404 : Page Not Found</h2>
-			<a onclick="history.back()" style="cursor: pointer; background: #2CA1D6;">Go Back</a>
+			<a href="../logout.php" style="cursor: pointer; background: #2CA1D6;">Go Back</a>
 			
 		</div>
 	</div>

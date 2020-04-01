@@ -39,5 +39,32 @@ class User {
         $stmt->execute();
 
         return $stmt->rowCount();
-    }   
+    }
+    public function get($table)
+    {
+
+        $query = "SELECT * FROM $table";
+
+        $stmt = $this->pdo->prepare($query);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function create($table, array $fields) {
+        $columns = implode(', ', array_keys($fields));
+        $values = ':' . implode(', :', array_keys($fields));
+        $query = "INSERT INTO {$table} ({$columns}) VALUES ($values);";
+        //echo $query; --> success
+
+        if ($stmt = $this->pdo->prepare($query)) {
+            foreach ($fields as $keys => $data) {
+                $stmt->bindValue(':' . $keys, $data);
+            }
+            return $stmt->execute();
+
+        } else {
+            return false;
+        }
+    }
 }

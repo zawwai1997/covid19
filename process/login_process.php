@@ -17,7 +17,7 @@ if (isset($_POST['btnLogin']) && $_POST['tok'] == $_SESSION['token']) {
     if ($rowCount == 1)
     {   // login success
         $_SESSION['email'] = $email;
-        header("location: ../admin.php");
+        header("location: ../add-district.php");
         exit();
     } else {   
         //login fail
@@ -28,7 +28,7 @@ if (isset($_POST['btnLogin']) && $_POST['tok'] == $_SESSION['token']) {
 
 } else {
     session_destroy();
-    header("location: error/404.php");
+    header("location: ../error/404.php");
     exit();
 
 }
